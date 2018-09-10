@@ -6,7 +6,10 @@
     <title>Taylore Westbrook's Project Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
-    <script src="../../main.js"></script>
+    <script src="../../main.js">
+        var canvas = document.getElementById("PuzzlePride");
+        var processingInstance = new Processing(canvas, sketchProc);
+    </script>
     <div class="container">
         <a href="../../index.html" class="tabButton">Home</a>
         <a href="../0/index.html" class="tabButton">Atari Pong</a>
@@ -25,5 +28,8 @@
         I developed a web application utilizing Processing.js and object-oriented programming to create
         a tile-swapping and reimaging game that educates users on LGBT communities and their pride flags.
     </p>
+    
+    <script type="text/javascript" src="processing.js"></script>
+    <canvas id="PuzzlePride" data-processing-sources="PuzzlePride.pde"></canvas>
 </body>
 </html>
