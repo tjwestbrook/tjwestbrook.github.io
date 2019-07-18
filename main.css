@@ -13,6 +13,32 @@ div {
     padding: 30px;
 }
 
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button:active {
+    display: none;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
 header {
     color: rgb(4, 156, 49);
     text-align: center;
