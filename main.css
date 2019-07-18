@@ -2,27 +2,27 @@ body, html {
     background-color: #000;
     font-family: monospace;
     font-size: 16px;
+    color: #fff;
 }
 
 div {
     width: auto;
     height: auto;
+    padding: 10px;
     box-align: center;
     text-align: center;
-    padding: 10px;
     font-size: 18px;
 }
 
 header {
-    color: rgb(0, 255, 100);
+    padding: 5px;
     text-align: center;
     font-weight: bold;
     font-size: 18px;
-    padding: 5px;
+    color: rgb(0, 255, 100);
 }
 
 h1 {
-    color: #fff;
     text-align: center;
     font-weight: bold;
     font-style: italic;
@@ -30,12 +30,11 @@ h1 {
 }
 
 p {
-    color: #fff;
-    text-align: center;
-    font-size: 14px;
     padding: 10px;
     border: 5px solid #fff;
     border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
 }
 
 img {
@@ -53,24 +52,31 @@ a:hover {
 .tablink {
     width: auto;
     height: auto;
-    background-color: #fff;
+    outline: none;
+    border: none;
 }
 
 .tab button {
     background-color: rgb(50, 255, 200);
     border-radius: 5px;
-    padding: 5px 5px 5px 5px;
-    font-size: 18px;
+    font-size: 20px;
     color: #000;
 }
 
 .tab button:hover {
-    background-color: #fff;
+    background-color: #000;
+    color: rgb(50, 255, 200);
+}
+
+.tab button:active {
+    background-color: #000;
+    color: rgb(50, 255, 200);
 }
 
 .tabcontent {
     height: 100%;
     background-color: #000;
+    display: none;
+    padding: 50px 20px;
     font-family: monospace;
-    font-size: 16px;
 }
