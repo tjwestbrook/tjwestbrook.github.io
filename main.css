@@ -67,3 +67,10 @@ a:hover {
 .tab button:hover {
     background-color: #fff;
 }
+
+.tabcontent {
+    height: 100%;
+    background-color: #000;
+    font-family: monospace;
+    font-size: 16px;
+}
