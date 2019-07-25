@@ -1,4 +1,4 @@
-function openPage(pageName, elmnt) {
+function openProject(pageName, elmnt) {
     var i, tabcontent, tablinks;
     
     // Hide all elements with class="tabcontent" by default */
@@ -15,7 +15,8 @@ function openPage(pageName, elmnt) {
   
     // Show the specific tab content
     document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = rgb(50, 255, 200);
 }
   
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementById("0").click();

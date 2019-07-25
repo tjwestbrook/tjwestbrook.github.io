@@ -76,6 +76,7 @@ a:hover {
 .tabcontent {
     height: 100%;
     background-color: #000;
+    color: rgb(50, 255, 200);
     display: none;
     padding: 50px 20px;
     font-family: monospace;
