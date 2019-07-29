@@ -6,11 +6,14 @@
     <title>Taylore Westbrook's Project Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script src="main.js">
+        // var canvas = document.getElementById("sketch");
+        // var processingInstance = new Processing(canvas, sketchProc);
+    </script>
     <div class="tab">
         <button class="tablink" onclick="openProject('0', this)" id="defaultOpen">Home</button>
         <!-- <button class="tablink" onclick="openProject('4', this)">Ultimate Tic-Tac-Toe</button> -->
-        <button class="tablink" onclick="openProject('3', this)">Sudoku-Solving AI</button>
+        <button class="tablink" onclick="openProject('3', this)">Sudoku AI</button>
         <button class="tablink" onclick="openProject('2', this)">Puzzle Pride</button>
         <button class="tablink" onclick="openProject('1', this)">Pong</button>
     </div>
@@ -24,16 +27,19 @@
         Connect with me on <a href="https://linkedin.com/in/taylore-westbrook" target="_blank">LinkedIn</a>.
     </header>
     <div id="3" class="tabcontent">
-        <h1>Sudoku-Solving Artificial Intelligence & Algorithm Efficiency · 2016</h1>
+        <h1>Sudoku Artificial Intelligence & Algorithm Efficiency · 2016</h1>
         <p>
             Through the Advanced Research Mentorship (ARM) program at Glastonbury High School,
             I worked with Laurent Michel, Ph.D., in the Department of Computer Science and Engienering
             at the University of Connecticut. By researching Crook's algorithm and the brute-force algorithm,
-            I was able to write a Sudoku-solving program in C++ while utilizing recursive programming.
+            I was able to write a Sudoku-solving program in C++ while utilizing recursive and oject-oriented programming.
         </p>
     </div>
+    <div id="SudokuSolver" class="project">
+        
+    </div>
     <div id="2" class="tabcontent">
-        <h1>Puzzle Pride - An LGBTQ+ Educational Game · 2015</h1>
+        <h1>Puzzle Pride: An LGBTQ+ Educational Game · 2015</h1>
         <p>
             Hosted by the MassMutual Life Insurance company, I completed a six-week program devoted to
             encouraging students to pursue computer science at the collegiate level and was educated in
@@ -42,14 +48,36 @@
             a tile-swapping and reimaging game that educates users on LGBT communities and their pride flags.
         </p>
     </div>
+    <div id="PuzzlePride" class="project">
+        <script type="text/javascript" src="processing.js"></script>
+        <canvas id="sketch" data-processing-sources="PuzzlePride.pde"></canvas>
+        <button onclick="startSketch();">Start</button>
+        <button onclick="stopSketch();">Stop</button>
+        <script type="application/javascript" src="main.js">
+            var processingInstance;
+            function startSketch() { switchSketchState(true); }
+            function stopSketch() { switchSketchState(false); }
+            function switchSketchState(on) {
+                if (!processingInstance) {
+                    processingInstanec = Processing.getInstanceById('sketch');
+                }
+                if (on) { processingInstance.loop(); }
+                else { processingInstance.noLoop(); }
+            }
+        </script>
+    </div>
     <div id="1" class="tabcontent">
-        <h1>Atari Pong - Dynamics & Mutlimedia Aspects of Game Design · 2014</h1>
+        <h1>Atari Pong / Table Tennis:<br>
+            Dynamics & Mutlimedia Aspects of Game Design · 2014</h1>
         <p>
             Under the guidance of Theodore Raphan, Ph.D., in the Department of Computer and Information Science
-            at Brooklyn College through a STEM program hosted through the Courant Institute of New York University,
+            at Brooklyn College through a STEM program hosted through New York University,
             I researched the dynamics and multimedia aspects of game design. With object-oriented programming and
-            the use of Processing.js, I re-created the Atari Pong game, also known as table tennis. 
+            the use of Processing.js, I re-created the Atari Pong game, also known as table tennis.
         </p>
+    </div>
+    <div id="Pong" class="project">
+        
     </div>
 </body>
 </html>

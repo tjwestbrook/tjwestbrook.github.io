@@ -55,7 +55,7 @@ a:hover {
     border: none;
 }
 
-.tab button {
+button {
     background-color: rgb(50, 255, 200);
     border-radius: 5px;
     font-size: 20px;
@@ -75,4 +75,32 @@ a:hover {
 .tabcontent {
     height: 100%;
     background-color: #000;
+}
+
+.project button {
+    background-color: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    box-align: center; 
+    position: center;
+}
+
+.project button:hover {
+    background-color: rgb(50, 255, 200);
+    color: #000; 
+}
+
+.project button:active {
+    background-color: #000;
+    color: rgb(50, 255, 200);
+}
+
+#sketch {
+    width: 600px;
+    height: 600px;
+    margin: 10px;
+    border: 5px solid rgb(50, 255, 200);
+    box-align: center;
+    position: center;
+    display: block;
 }
