@@ -6,78 +6,1224 @@
     <title>Taylore Westbrook's Project Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js">
-        // var canvas = document.getElementById("sketch");
-        // var processingInstance = new Processing(canvas, sketchProc);
-    </script>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
     <div class="tab">
         <button class="tablink" onclick="openProject('0', this)" id="defaultOpen">Home</button>
         <!-- <button class="tablink" onclick="openProject('4', this)">Ultimate Tic-Tac-Toe</button> -->
-        <button class="tablink" onclick="openProject('3', this)">Sudoku AI</button>
-        <button class="tablink" onclick="openProject('2', this)">Puzzle Pride</button>
-        <button class="tablink" onclick="openProject('1', this)">Pong</button>
+        <button class="tablink" onclick="openProject('3', this)" id=3>Sudoku AI</button>
+        <button class="tablink" onclick="openProject('2', this)" id=2>Puzzle Pride</button>
+        <button class="tablink" onclick="openProject('1', this)" id=1>Pong</button>
     </div>
+    <img src="images/0propic.jpg" width=20% height=20% border=1px>
+    <br>
+    <a target="_blank" href="https://linkedin.com/in/taylore-westbrook">
+      <img src="images/linkedin.png" width=5% height=5%>
+    </a>
 </head>
 <body onload="document.getElementById('defaultOpen').click()">
     <header>
-        <img src="images/profilepicture.jpg" width="225px" height="280px">
-        <br style="clear: left;" />
-        Below is an audit of all my interactive computer science projects.
-        Interested in finding out more?
-        Connect with me on <a href="https://linkedin.com/in/taylore-westbrook" target="_blank">LinkedIn</a>.
+        Welcome to an audit of my interactive computer science projects.
     </header>
     <div id="3" class="tabcontent">
-        <h1>Sudoku Artificial Intelligence & Algorithm Efficiency · 2016</h1>
-        <p>
+        <h1 onclick="openProject('3',this)">Sudoku Artificial Intelligence & Algorithm Efficiency · 2016</h1>
+        <p onclick="openProject('3',this)">
             Through the Advanced Research Mentorship (ARM) program at Glastonbury High School,
             I worked with Laurent Michel, Ph.D., in the Department of Computer Science and Engineering
-            at the University of Connecticut. By researching Crook's algorithm and a brute-force algorithm,
-            I was able to write a Sudoku-solving program in C++ while utilizing recursive and oject-oriented programming.
+            at the University of Connecticut. By researching Crook's algorithm and creating a brute-force algorithm,
+            I was able to write a Sudoku-solving program in C++ while utilizing recursive and OO programming.
         </p>
     </div>
-    <div id="SudokuSolver" class="project">
+    <div id="0SudokuSolver" class="project">
         
     </div>
     <div id="2" class="tabcontent">
-        <h1>Puzzle Pride: An LGBTQ+ Educational Game · 2015</h1>
-        <p>
+        <h1 onclick="openProject('2',this)">Puzzle Pride: An LGBTQ+ Educational Game · 2015</h1>
+        <p class="glow-on-hover" onclick="openProject('2',this)">
             Hosted by the MassMutual Life Insurance company, I completed a six-week program devoted to
             encouraging students to pursue computer science at the collegiate level and was educated in
             robotics, graphics and animation, data structures, algorithms, and mobile app development.
-            I developed a web application utilizing Processing.js and object-oriented programming to create
-            a tile-swapping and reimaging game that educates users on LGBT communities and their pride flags.
+            I developed a web application utilizing Processing.js and OOP to create a tile-swapping
+            and reimaging game that educates users on LGBT communities and their pride flags.
         </p>
     </div>
-    <div id="PuzzlePride" class="project">
-        <script type="text/javascript" src="processing.js"></script>
-        <canvas id="sketch" data-processing-sources="PuzzlePride.pde"></canvas>
-        <button onclick="startSketch();">Start</button>
-        <button onclick="stopSketch();">Stop</button>
-        <script type="application/javascript" src="main.js">
-            var processingInstance;
-            function startSketch() { switchSketchState(true); }
-            function stopSketch() { switchSketchState(false); }
-            function switchSketchState(on) {
-                if (!processingInstance) {
-                    processingInstanec = Processing.getInstanceById('sketch');
+    <div id="0PuzzlePride" class="project">
+        <script type="application/processing">
+            // import processing.core.PImage; //imports image library to import images
+            // PImage[] img = new PImage[14]; //initializing images of flags for reference
+            
+            int width = 600;
+            int height = 600;
+            int backgroundColor = 245; //some form of gray for the background
+            
+            int num_of_row = 6; //number of rows
+            int num_of_col = 6; //number of columns
+            int btilex = -1; //blank tile's x position
+            int btiley = -1; //blank tile's y position
+            int textx = 10; //text's x position
+            int texty = 120; //text's y position
+            int level = 1; //game starts at level 1
+            boolean won = false; //determines if level was won
+            Tiles[][] tile = new Tiles[6][6]; //declaring all tiles
+            
+            //colors in all flags
+            color red = color(255, 0, 0);
+            color darkRed = color(176, 48, 96);
+            color lightRed = color(219, 112, 147);
+            color orange = color(255, 102, 0);
+            color lightOrange = color(238, 221, 130);
+            color yellow = color(255, 255, 0);
+            color lightYellow = color(238, 221, 130);
+            color green = color(0, 255, 0);
+            color darkGreen = color(34, 139, 34);
+            color blue = color(0, 0, 255);
+            color babyBlue = color(175, 238, 238);
+            color lightBlue = color(0, 191, 255);
+            color purple = color(138, 43, 266);
+            color lightPurple = color(147, 112, 219);
+            color lavender = color(221, 160, 221);
+            color pink = color(255, 20, 147);
+            color lightPink = color(255, 192, 203);
+            color violet = color(218, 112, 214);
+            color darkViolet = color (186, 85, 211);
+            color brown = color(160, 82, 45);
+            color gray = color(139, 137, 137);
+            color lightGray = color(205, 201, 201);
+            color black = color(0);
+            color blank = color(backgroundColor);
+            color switchColor = blank; //blank
+            
+            void setup() {
+              size(600, 600);
+              background(backgroundColor);
+              
+              //declaring all images
+              // img[0] = loadImage("pride_flags/gay_pride_flag.png");
+              // img[1] = loadImage("pride_flags/transgender_pride_flag.png");
+              // img[2] = loadImage("pride_flags/bisexual_pride_flag.png");
+              // img[3] = loadImage("pride_flags/pansexual_pride_flag.png");
+              // img[4] = loadImage("pride_flags/asexual_demisexual_pride_flag.png");
+              // img[5] = loadImage("pride_flags/genderqueer_pride_flag.png");
+              // img[6] = loadImage("pride_flags/nonbinary_pride_flag.png");
+              // img[7] = loadImage("pride_flags/genderfluid_pride_flag.png");
+              // img[8] = loadImage("pride_flags/bigender_pride_flag.png");
+              // img[9] = loadImage("pride_flags/intersex_pride_flag.png");
+              // img[10] = loadImage("pride_flags/bear_pride_flag.png");
+              // img[11] = loadImage("pride_flags/lipstick_lesbian_pride_flag.jpg");
+              // img[12] = loadImage("pride_flags/twink_pride_flag.jpg");
+              // img[13] = loadImage("pride_flags/straight_ally_pride_flag.png");
+              
+              InitializeTiles(); //initializes all tiles
+              flagImage(); //sets up and displays the flag image
+              for (int i = 0; i < 2000; i++) { scramble(); } //scrambles all the tiles
+              instructions(); //displays instructions
+            }
+            
+            void draw() {
+              for (int y = 0; y < num_of_row; y++) {
+                for (int x = 0; x < num_of_col; x++) {
+                  tile[y][x].display(); //continuously updates the game
                 }
-                if (on) { processingInstance.loop(); }
-                else { processingInstance.noLoop(); }
+              }
+              // image(img[level - 1], 390, 20); //displays image
+              if (userWon() && won == false) { //displays winning fact
+                won = true;
+                fill(red);
+                textSize(14);
+                if (level < 14) { text("You won! Press ENTER for next level. ", textx, texty + 475); }
+                else { text("Congratulations! You beat the game! ", textx, texty + 60); }
+                displayFact(level);
+              }
+            }
+            
+            void keyPressed() {
+              findBlankTile(); //finds blank tile's x and y positions
+              int tilex = btilex;
+              int tiley = btiley;
+              
+              if (key == CODED && !userWon()) { //if user presses a key, the tile's x/y coordinates are set
+                if (keyCode == UP) { tiley = btiley - 1; }
+                else if (keyCode == DOWN) { tiley = btiley + 1; }
+                else if (keyCode == LEFT) { tilex = btilex + 1; }
+                else if (keyCode == RIGHT) { tilex = btilex - 1; }
+              }
+              if (canTilesSwap(tilex, tiley)) { switchTiles(tilex, tiley, switchColor); } //if tiles can be swapped, swap them
+            }
+            
+            void keyTyped() {
+              if (userWon() && level < 14) {
+                clear(); //resets board
+                background(backgroundColor); //sets background again
+                level = level + 1; //changes level
+                flagImage(); //displays new flag
+                for (int i = 0; i < 2000; i++) { scramble(); } //scrambles flag
+                instructions(); //displays instructions
+                won = false;
+              }
+            }
+            
+            void instructions() { //displays instructions
+              fill(red);
+              textSize(20);
+              text("LEVEL " + level + ": Try to solve this flag!", textx, texty - 90);
+              fill(black);
+              textSize(14);
+              text("Use the arrow keys to move up/down/left/right. ", textx, texty + 20 - 90);
+              text("The blank space will always end on the bottom. ", textx, texty + 40 - 90);
+            }
+            
+            class Tiles { //tile variables
+              int tilex, tiley;
+              int tilelength, tileradius, tilespace;
+              color tilecolor;
+              
+              Tiles (int x, int y, int l, int r, int s) { //constructor for tiles
+                tilex = x;
+                tiley = y;
+                tilelength = l;
+                tileradius = r;
+                tilespace = s;
+              }
+              
+              void display() { //displays tile
+                fill(tilecolor);
+                rect(tilex, tiley, tilelength, tilelength, tileradius);
+              }
+              
+              color getColor() { //returns the color of the tile
+                return tilecolor;
+              }
+              
+              void setColor(color c) { //changes the color of the tile
+                 tilecolor = c;
+              }
+            }
+            
+            void InitializeTiles() { //initializes tiles
+              int length = 55; //width and height of tile
+              int space = 2; //space between tiles
+              int xtile = (width/2) - length*(num_of_col/2) - space*(num_of_col/2); //x placement of first [0][0] tile
+              int ytile = height - (height/6); //y placement of first tile
+              int radius = 2; //amount of curvature
+              
+              for (int y = 0; y < num_of_row; y++) {
+                int z = 0; //resets x-position
+                for (int x = 0; x < num_of_col; x++) {
+                  tile[y][x] = new Tiles(xtile + z, ytile, length, radius, space); //initializing every tile
+                  z = z + length + space; //moves tiles' x-positions over
+                }
+                ytile = ytile - length - space; //moves tiles' y-positions over
+              }
+            }
+            
+            void flagImage() {
+              color tcolor = blank;
+              
+              if (level == 1) { //gay pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    //changes colors of tiles
+                    if (y == 0 && x == 5) { tcolor = blank; } //one blank tile
+                    else if (y == 0) { tcolor = purple; }
+                    else if (y == 1) { tcolor = blue; }
+                    else if (y == 2) { tcolor = green; }
+                    else if (y == 3) { tcolor = yellow; }
+                    else if (y == 4) { tcolor = orange; }
+                    else if (y == 5) { tcolor = red; }
+                    tile[y][x].setColor(tcolor); //sets color of tile
+                  }
+                }
+              }
+              
+              if (level == 2) { //transgender pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 5) { tcolor = babyBlue; }
+                    else if (y == 1 || y == 4) { tcolor = lightPink; }
+                    else if (y == 2 || y == 3) { tcolor = lightGray; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 3) { //bisexual pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 1) { tcolor = blue; }
+                    else if (y == 2 || y == 3) { tcolor = purple; }
+                    else if (y == 4 || y == 5) { tcolor = pink; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+                
+              if (level == 4) { //pansexual pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 1) { tcolor = lightBlue; }
+                    else if (y == 2 || y == 3) { tcolor = yellow; }
+                    else if (y == 4 || y == 5) { tcolor = pink; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 5) { //asexual/demisexual pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 1) { tcolor = purple; }
+                    else if (y == 2) { tcolor = lightGray; }
+                    else if (y == 3) { tcolor = gray; }
+                    else if (y == 4 || y == 5) { tcolor = black; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 6) { //genderqueer pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 1) { tcolor = darkGreen; }
+                    else if (y == 2 || y == 3) { tcolor = lightGray; }
+                    else if (y == 4 || y == 5) { tcolor = lightPurple; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 7) { //polysexual pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 1) { tcolor = black; }
+                    else if (y == 2) { tcolor = purple; }
+                    else if (y == 3) { tcolor = lightGray; }
+                    else if (y == 4 || y == 5) { tcolor = yellow; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 8) { //genderfluid pride flag
+              for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0) { tcolor = blue; }
+                    else if (y == 1) { tcolor = black; }
+                    else if (y == 2 || y == 3) { tcolor = darkViolet; }
+                    else if (y == 4) { tcolor = lightGray; }
+                    else if (y == 5) { tcolor = lightPink; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 9) { //bigender pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0 || y == 5) { tcolor = lavender; }
+                    else if (y == 1 || y == 4) { tcolor = lightGray; }
+                    else if (y == 2) { tcolor = lightPink; }
+                    else if (y == 3) { tcolor = babyBlue; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 10) { //intersex pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if ((y == 1 || y == 4) && (x == 2 || x == 3)) { tcolor = purple; }
+                    else if ((y == 2 || y == 3) && ( x == 1 || x == 4)) { tcolor = purple; }
+                    else { tcolor = yellow; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 11) { //bear pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0) { tcolor = black; }
+                    else if (y == 1) { tcolor = lightGray; }
+                    else if (y == 2) { tcolor = lightOrange; }
+                    else if (y == 3) { tcolor = yellow; }
+                    else if (y == 4) { tcolor = orange; }
+                    else if (y == 5) { tcolor = brown; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 12) { //lipstick lesbian pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                    else if (y == 0) { tcolor = darkRed; }
+                    else if (y == 1) { tcolor = lightRed; }
+                    else if (y == 2) { tcolor = lightPink; }
+                    else if (y  == 3) { tcolor = violet; }
+                    else if (y == 4) { tcolor = darkViolet; }
+                    else if (y == 5) { tcolor = purple; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 13) { //twink pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 5) { tcolor = blank; }
+                     else if (y == 0 || y == 1) { tcolor = lightYellow; }
+                    else if (y == 2 || y == 3) { tcolor = lightGray; }
+                    else if (y == 4 || y == 5) { tcolor = lightPink; }
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+              
+              if (level == 14) { //straight ally pride flag
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (y == 0 && x == 3) { tcolor = blank; }
+                    
+                    else if (y == 0) {
+                      if (x == 2 || x == 3) { tcolor = lightGray; }
+                      else { tcolor = purple; }
+                      
+                    } else if (y == 1) {
+                      if (x == 2 || x == 3) { tcolor = black; }
+                      else { tcolor = blue; }
+                      
+                    } else if (y == 2) {
+                      if (x == 0 || x == 5) { tcolor = lightGray; }
+                      else { tcolor = green; }
+                      
+                    } else if (y == 3) {
+                      if (x == 0 || x == 5) { tcolor = black; }
+                      else { tcolor = yellow; }
+                      
+                    } else if (y == 4) {
+                      if (x == 2 || x == 3) { tcolor = orange; }
+                      else { tcolor = lightGray; }
+                      
+                    } else {
+                        if (x == 2 || x == 3) { tcolor = red; }
+                        else { tcolor = black; }
+                    }
+                    
+                    tile[y][x].setColor(tcolor);
+                  }
+                }
+              }
+            }
+            
+            boolean userWon() {
+              int checkWinCount = 0;
+              
+              if (level == 1) { //gay pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == purple) { checkWinCount++; }
+                  if (tile[1][x].getColor() == blue) { checkWinCount++; }
+                  if (tile[2][x].getColor() == green) { checkWinCount++; }
+                  if (tile[3][x].getColor() == yellow) { checkWinCount++; }
+                  if (tile[4][x].getColor() == orange) { checkWinCount++; }
+                  if (tile[5][x].getColor() == red) { checkWinCount++; }
+                }
+              }
+            
+              else if (level == 2) { //transgender pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == babyBlue) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightPink) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[3][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[4][x].getColor() == lightPink) { checkWinCount++; }
+                  if (tile[5][x].getColor() == babyBlue) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 3) { //bisexual pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == blue) { checkWinCount++; }
+                  if (tile[1][x].getColor() == blue) { checkWinCount++; }
+                  if (tile[2][x].getColor() == purple) { checkWinCount++; }
+                  if (tile[3][x].getColor() == purple) { checkWinCount++; }
+                  if (tile[4][x].getColor() == pink) { checkWinCount++; }
+                  if (tile[5][x].getColor() == pink) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 4) { //pansexual pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == lightBlue) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightBlue) { checkWinCount++; }
+                  if (tile[2][x].getColor() == yellow) { checkWinCount++; }
+                  if (tile[3][x].getColor() == yellow) { checkWinCount++; }
+                  if (tile[4][x].getColor() == pink) { checkWinCount++; }
+                  if (tile[5][x].getColor() == pink) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 5) { //asexual/demisexual pride flag
+                 for (int x = 0; x < num_of_col; x++) {
+                   if (tile[0][x].getColor() == purple) { checkWinCount++; }
+                   if (tile[1][x].getColor() == purple) { checkWinCount++; }
+                   if (tile[2][x].getColor() == lightGray) { checkWinCount++; }
+                   if (tile[3][x].getColor() == gray) { checkWinCount++; }
+                   if (tile[4][x].getColor() == black) { checkWinCount++; }
+                   if (tile[5][x].getColor() == black) { checkWinCount++; }
+                 }
+               }
+              
+              else if (level == 6) { //genderqueer pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == darkGreen) { checkWinCount++; }
+                  if (tile[1][x].getColor() == darkGreen) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[3][x].getColor() == lightGray) { checkWinCount++; }  
+                  if (tile[4][x].getColor() == lightPurple) { checkWinCount++; }
+                  if (tile[5][x].getColor() == lightPurple) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 7) { //non-binary pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == black) { checkWinCount++; }
+                  if (tile[1][x].getColor() == black) { checkWinCount++; }
+                  if (tile[2][x].getColor() == purple) { checkWinCount++; }
+                  if (tile[3][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[4][x].getColor() == yellow) { checkWinCount++; }
+                  if (tile[5][x].getColor() == yellow) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 8) { //genderfluid pride flag
+                for (int x = 0; x < num_of_col; x++) {  
+                  if (tile[0][x].getColor() == blue) { checkWinCount++; }
+                  if (tile[1][x].getColor() == black) { checkWinCount++; }
+                  if (tile[2][x].getColor() == darkViolet) { checkWinCount++; }
+                  if (tile[3][x].getColor() == darkViolet) { checkWinCount++; }
+                  if (tile[4][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[5][x].getColor() == lightPink) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 9) { //bigender pride flag
+                for (int x = 0; x < num_of_col; x++) {  
+                  if (tile[0][x].getColor() == lavender) { checkWinCount++; }
+                  if (tile[5][x].getColor() == lavender) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[4][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightPink) { checkWinCount++; }
+                  if (tile[3][x].getColor() == babyBlue) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 10) { //intersex pride flag
+                if (tile[1][2].getColor() == purple) { checkWinCount++; }
+                if (tile[1][3].getColor() == purple) { checkWinCount++; }
+                if (tile[2][1].getColor() == purple) { checkWinCount++; }
+                if (tile[2][4].getColor() == purple) { checkWinCount++; }
+                if (tile[3][1].getColor() == purple) { checkWinCount++; }
+                if (tile[3][4].getColor() == purple) { checkWinCount++; }
+                if (tile[4][2].getColor() == purple) { checkWinCount++; }
+                if (tile[4][3].getColor() == purple) { checkWinCount++; }
+               
+                for (int y = 0; y < num_of_row; y++) {
+                  for (int x = 0; x < num_of_col; x++) {
+                    if (tile[y][x].getColor() == yellow) { checkWinCount++; }
+                  }
+                }
+              }
+              
+              else if (level == 11) { //bear pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == black) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightOrange) { checkWinCount++; }
+                  if (tile[3][x].getColor() == yellow) { checkWinCount++; }
+                  if (tile[4][x].getColor() == orange) { checkWinCount++; }
+                  if (tile[5][x].getColor() == brown) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 12) { //lipstick lesbian pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == darkRed) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightRed) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightPink) { checkWinCount++; }
+                  if (tile[3][x].getColor() == violet) { checkWinCount++; }
+                  if (tile[4][x].getColor() == darkViolet) { checkWinCount++; }
+                  if (tile[5][x].getColor() == purple) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 13) { //twink pride flag
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[0][x].getColor() == lightYellow) { checkWinCount++; }
+                  if (tile[1][x].getColor() == lightYellow) { checkWinCount++; }
+                  if (tile[2][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[3][x].getColor() == lightGray) { checkWinCount++; }
+                  if (tile[4][x].getColor() == lightPink) { checkWinCount++; }
+                  if (tile[5][x].getColor() == lightPink) { checkWinCount++; }
+                }
+              }
+              
+              else if (level == 14) { //straight ally pride flag
+                if (tile[0][0].getColor() == purple) { checkWinCount++; }
+                if (tile[0][1].getColor() == purple) { checkWinCount++; }
+                if (tile[0][2].getColor() == lightGray) { checkWinCount++; }
+                if (tile[0][4].getColor() == purple) { checkWinCount++; }
+                if (tile[0][5].getColor() == purple) { checkWinCount++; }
+                if (tile[1][0].getColor() == blue) { checkWinCount++; }
+                if (tile[1][1].getColor() == blue) { checkWinCount++; }
+                if (tile[1][2].getColor() == black) { checkWinCount++; }
+                if (tile[1][3].getColor() == black) { checkWinCount++; }
+                if (tile[1][4].getColor() == blue) { checkWinCount++; }
+                if (tile[1][5].getColor() == blue) { checkWinCount++; }
+                if (tile[2][0].getColor() == lightGray) { checkWinCount++; }
+                if (tile[2][1].getColor() == green) { checkWinCount++; }
+                if (tile[2][2].getColor() == green) { checkWinCount++; }
+                if (tile[2][3].getColor() == green) { checkWinCount++; }
+                if (tile[2][4].getColor() == green) { checkWinCount++; }
+                if (tile[2][5].getColor() == lightGray) { checkWinCount++; }
+                if (tile[3][0].getColor() == black) { checkWinCount++; }
+                if (tile[3][1].getColor() == yellow) { checkWinCount++; }
+                if (tile[3][2].getColor() == yellow) { checkWinCount++; }
+                if (tile[3][3].getColor() == yellow) { checkWinCount++; }
+                if (tile[3][4].getColor() == yellow) { checkWinCount++; }
+                if (tile[3][5].getColor() == black) { checkWinCount++; }
+                if (tile[4][0].getColor() == lightGray) { checkWinCount++; }
+                if (tile[4][1].getColor() == lightGray) { checkWinCount++; }
+                if (tile[4][2].getColor() == orange) { checkWinCount++; }
+                if (tile[4][3].getColor() == orange) { checkWinCount++; }
+                if (tile[4][4].getColor() == lightGray) { checkWinCount++; }
+                if (tile[4][5].getColor() == lightGray) { checkWinCount++; }
+                if (tile[5][0].getColor() == black) { checkWinCount++; }
+                if (tile[5][1].getColor() == black) { checkWinCount++; }
+                if (tile[5][2].getColor() == red) { checkWinCount++; }
+                if (tile[5][3].getColor() == red) { checkWinCount++; }
+                if (tile[5][4].getColor() == black) { checkWinCount++; }
+                if (tile[5][5].getColor() == black) { checkWinCount++; }
+              }
+              
+              if (checkWinCount == 35) { return true; }
+              return false;
+            }
+            
+            void displayFact(int level) {
+              int textx = 5;
+              int texty = 100;
+              
+              fill(blue);
+              textSize(13);
+              
+              if (level == 1) {
+                text("This is the LGBTQ+ pride flag. ", textx, texty);
+                text("L = Lesbian: a woman attracted to other women. ", textx, texty + 20);
+                text("G = Gay: a person attracted to others of the same sex or gender. ", textx, texty + 40);
+                text("B = Bisexual: a person attracted to both men and women. ", textx, texty + 60);
+                text("T = Transgender: a person whose gender identity does not match their assigned sex at birth. ", textx, texty + 80);
+                text("Q = Questioning: someone who is questioning their sexuality and/or gender identity. ", textx, texty + 100);
+              }
+              else if (level == 2) {
+                text("This is the transgender pride flag. ", textx, texty);
+                text("Trans or transgender means one's gender identity does not ", textx, texty + 20);
+                text("match their assigned sex at birth. ", textx, texty + 40);
+                text("FtM (female-to-male): A man who was born female. ", textx, texty + 60);
+                text("MtF (male-to-female): A woman who was born male. ", textx, texty + 80);
+              }
+              else if (level == 3) {
+                text("This is the bisexual pride flag. ", textx, texty);
+                text("Bisexual means being attracted to men and women. ", textx, texty + 20);
+              }
+              else if (level == 4) {
+                text("This is the pansexual pride flag. ", textx, texty);
+                text("Pansexual means being attracted toward all genders ", textx, texty + 20);
+                text("or lack there of. ", textx, texty + 40);
+              }
+              else if (level == 5) {
+                text("This is the asexual pride flag. ", textx, texty);
+                text("Asexual means having no sexual attraction towards anyone. ", textx, texty + 20);
+                text("Another term, aromantic, means having no romantic attraction towards anyone. ", textx, texty + 40);
+                text("Another term, agender, means having no gender. ", textx, texty + 60);
+              }
+              else if (level == 6) {
+                text("This is the genderqueer pride flag. ", textx, texty);
+                text("Genderqueer means identifying with neither, both, or a ", textx, texty + 20);
+                text("combination of masculine and feminine genders. ", textx, texty + 40);
+              }
+              else if (level == 7) {
+                text("This is the non-binary pride flag. ", textx, texty);
+                text("Non-binary, similar to genderqueer, means identifying with ", textx, texty + 20);
+                text("a gender that is not exclusively male or female. ", textx, texty + 40);
+              }
+              else if (level == 8) {
+                text("This is the genderfluid pride flag. ", textx, texty);
+                text("Genderfluid means identifying with multiple genders at", textx, texty + 20);
+                text("various times. ", textx, texty + 40);
+                text("Ex: At one instance, a person may identify as agender, and at another, a man. ", textx, texty + 60);
+              }
+              else if (level == 9) {
+                text("This is the bigender pride flag. ", textx, texty);
+                text("Bigender means identifying with two genders, either ", textx, texty + 20);
+                text("simultaneously or separately at different times. ", textx, texty + 40);
+                text("Ex: Someone who identifies as both a man and woman at the same time. ", textx, texty + 60);
+              }
+              else if (level == 10) {
+                text("This is the intersex pride flag. ", textx, texty);
+                text("Intersex means being born both male and female ", textx, texty + 20);
+                text("in some aspect, whether that is physical, hormonal, etc. ", textx, texty + 40);
+              }
+              else if (level == 11) {
+                text("This is the bear pride flag. ", textx, texty);
+                text("A bear is a large, hairy, masuline, gay man. ", textx, texty + 20);
+              }
+              else if (level == 12) {
+                text("This is the lipstick lesbian pride flag. ", textx, texty);
+                text("A lipstick lesbian is a feminine, gay woman.", textx, texty + 20);
+              }
+              else if (level == 13) {
+                text("This is the twink pride flag. ", textx, texty);
+                text("A twink is a young, thin man with a feminine manner and ", textx, texty + 20);
+                text("very little body hair. ", textx, texty + 40);
+              }
+              else if (level == 14) {
+                text("This is the cis/straight ally pride flag. ", textx, texty);
+                text("An ally is a supporter of the LGBTQ+ community. ", textx, texty + 20);
+              }
+            }
+            
+            boolean canTilesSwap(int tilex, int tiley) {
+              if (tilex < 0 || tilex > 5 || tiley < 0 || tiley > 5) { return false; } //if the "tile" is out of the region, it cannot swap 
+              else {
+                switchColor = tile[tiley][tilex].getColor(); //gets color of tile clicked
+                //returns true if the tile is in one of the four regions that are allowed to be swapped with
+                if (tilex == btilex) {
+                  if (tiley == btiley - 1) { return true; }
+                  else if (tiley == btiley + 1) { return true; }
+                }
+                else if (tiley == btiley) {
+                  if (tilex == btilex - 1) { return true; }
+                  else if (tilex == btilex + 1) { return true; }
+                }
+              }
+              return false;
+            }
+            
+            void switchTiles( int tilex, int tiley, color tilecolor) {
+              tile[btiley][btilex].setColor(tilecolor); //sets the color of the blank tile to the new tile color
+              tile[tiley][tilex].setColor(blank); //sets the colored tile to be blank
+            }
+            
+            void scramble() {
+              findBlankTile(); //finds the blank tile first
+              boolean canSwapTiles = false;
+              
+              while (canSwapTiles == false) {
+                int rtilex = btilex;
+                int rtiley = btiley;
+                int[] situation = {btiley - 1, btiley + 1, btilex - 1, btilex + 1}; //sets all possibilities for blank tile
+                int randSit = (int)random(4); //randomly chooses one of the four possible outcomes
+                
+                //sets the random tile's x and y positions depending on which random choice was made
+                if (randSit == 0) { rtiley = situation[0]; }
+                if (randSit == 1) { rtiley = situation[1]; }
+                if (randSit == 2) { rtilex = situation[2]; }
+                if (randSit == 3) { rtilex = situation[3]; }
+                boolean canSwap = canTilesSwap(rtilex, rtiley); //returns whether or not it is possible to swap the blank and random tile
+              
+                if (canSwap == true) { //if it is possible...
+                  color rcolor = tile[rtiley][rtilex].getColor(); //gets the random tile's color
+                  switchTiles(rtilex, rtiley, rcolor); //swaps the blank and random tile
+                  canSwapTiles = true; //gets out of the while loop
+                }
+              }
+            }
+            
+            void findBlankTile() { //identifies blank tile
+              for (int y = 0; y < num_of_row; y++) {
+                for (int x = 0; x < num_of_col; x++) {
+                  if (tile[y][x].getColor() == blank) { //if this tile is blank...
+                    btilex = x; //sets x-position of blank tile
+                    btiley = y; //sets y-position of blank tile
+                  }
+                }
+              }
             }
         </script>
+        <canvas id="sketch"></canvas>
     </div>
     <div id="1" class="tabcontent">
-        <h1>Atari Pong / Table Tennis:<br>
-            Dynamics & Mutlimedia Aspects of Game Design · 2014</h1>
-        <p>
+        <h1 onclick="openProject('1',this)">Atari Pong / Table Tennis:<br>Dynamics & Mutlimedia Aspects of Game Design · 2014</h1>
+        <p onclick="openProject('1',this)">
             Under the guidance of Theodore Raphan, Ph.D., in the Department of Computer and Information Science
-            at Brooklyn College through a STEM program hosted through New York University,
-            I researched the dynamics and multimedia aspects of game design. With object-oriented programming and
+            at Brooklyn College through a STEM program hosted through New York University, I researched
+            the dynamics and multimedia aspects of game design. With object-oriented programming and
             the use of Processing.js, I re-created the Atari Pong game, also known as table tennis.
         </p>
     </div>
-    <div id="Pong" class="project">
+    <div id="0Pong" class="project">
+      <script type="application/processing">
+        //Declaring all objects
+        Ball b1;
+        Ball b2;
+        Ball b3;
+        Paddle p1;
         
+        //Parameters governing background colors
+        int red = 255; int green = 255; int blue = 0;
+        
+        //Scores & levels
+        int bscore = 0; int pscore = 0;  //Ball & Paddle score
+        int bsl = 5;  //Amount ball must score to cause the player to lose
+        int psl = 10;  //Amount paddle must score to advance to the next level
+        
+        //Image(s)
+        //PImage img1;  //Image for winning
+        
+        //Sound components
+        //import ddf.minim.*;  //Imports the minim library, which allows for the importing of audio files
+        //Minim sounds;
+        //AudioPlayer mp1, mp2, mp3, mp4, mp5, mp6;  //Declaring all audio files
+        
+        //Setup(), which displays everything once with no return
+        void setup() {
+          size(600, 400);
+          frameRate(60);
+        
+          //Initializing all objects
+          b1 = new Ball (width/2, height/2, 15, 15, 1, 1, 3, color(240, 0, 100));
+          b2 = new Ball (width/2, height/2, 10, 10, 1, 1, 4, color(200, 255, 0));
+          b3 = new Ball (width/2, height/2, 7, 7, 1, 1, 5, color(0, 255, 0));
+          p1 = new Paddle (550, 15, 80, color(10, 200, 230));
+         
+          //Initializing image(s)
+          //img1 = loadImage("gold medal.jpg");
+         
+          //Initializing all audio files
+          //sounds = new Minim(this);
+          //mp1 = sounds.loadFile("boing.mp3");  //Audio file for the paddle hitting the ball
+          //mp2 = sounds.loadFile("fail.mp3");  //Audio file for the ball hitting the right-side wall
+          //mp3 = sounds.loadFile("hooray.mp3");  //Audio file for beating a single level
+          //mp4 = sounds.loadFile("bravo.mp3");  //Audio file for beating all of the levels
+          //mp5 = sounds.loadFile("failed.mp3");  //Audio file for losing
+          //mp6 = sounds.loadFile("Imma Try it Out.mp3");  //Audio file for background music
+         
+          //mp6.loop( );  //Calling background music method/function
+        }
+        
+        //Draw(), which displays everything in a loop with no return
+        void draw() {
+          //Displays background
+          background (red, green, blue);
+          stroke(0);
+          strokeWeight(2);
+          line(width/2, 0, width/2, 15); //top line
+          line(width/2, 45, width/2, height); //bottom line
+          fill(red-40, green-40, blue-40);
+          ellipse(width/2, height/2, 70, 70); //center circle
+         
+          //Displays scoreboard
+          fill(0);
+          textSize(32);
+          text("Ball's Score: "+bscore, 10, 390);
+          text("Your Score: "+pscore, 370, 390);
+          line(0, 355, 600, 355);
+         
+          //Displays instructions
+          fill(0);
+          textSize(16);
+          text("Mouse/Keyboard/Paddle Controls:", 10, 80);
+          text("Move up to go up, down to go down.", 10, 100);
+          text("Don't let the Ball's Score reach 5!", 10, 140);
+         
+          //Displays Level 1
+          if ((pscore < psl) && (bscore < bsl)) {
+          fill(0);
+          textSize(32);
+          text("Level "+1, (width/2)-50, 40);
+          }
+         
+          //You win (1)
+          if ((pscore == psl) && (bscore < bsl)) {
+          stroke(0);
+          line(width/2, 15, width/2, 45); //middle line
+          fill(0);
+          textSize(50);
+          text("YOU WIN!", (width/2)-110, height/2);
+          textSize(20);
+          text("Keep playing for Level 2!", (width/2)-110, (height/2)+50);
+          //mp3.play();
+          }
+         
+          //Level 2: 1st ball gets smaller & faster
+          if ((pscore > psl) && (pscore < psl*2) && (bscore < bsl)) {
+          fill(0);
+          textSize(32);
+          text("Level "+2, (width/2)-50, 40);
+          red = 0;
+          green = 235;
+          blue = 100;
+          b1.setSize(10, 10);
+          b1.setSpeed(4);
+          //mp3.rewind();
+          }
+         
+          //You win (2)
+          if ((pscore == psl*2) && (bscore < bsl)) {
+          stroke(0);
+          line(width/2, 15, width/2, 45);
+          fill(0);
+          textSize(50);
+          text("YOU WIN!", (width/2)-110, height/2);
+          textSize(20);
+          text("Keep playing for Level 3!", (width/2)-110, (height/2)+50);
+          //mp3.play();
+          }
+         
+          //Level 3: 2nd ball is added
+          if ((pscore > psl*2) && (pscore < psl*3) && (bscore < bsl)) {
+          fill(0);
+          textSize(32);
+          text("Level "+3, (width/2)-50, 40);
+          red = 235;
+          green = 100;
+          blue = 0;
+          b2.setSize(10, 10);
+          b2.setSpeed(4);
+          //mp3.rewind();
+          }
+         
+          //You win (3)
+          if ((pscore == psl*3) && (bscore < bsl)) {
+          stroke(0);
+          line(width/2, 15, width/2, 45);
+          fill(0);
+          textSize(50);
+          text("YOU WIN!", (width/2)-110, height/2);
+          textSize(20);
+          text("Keep playing for Level 4!", (width/2)-110, (height/2)+50);
+          //mp3.play();
+          }
+         
+          //Level 4: balls & paddle get smaller & faster
+          if ((pscore > psl*3) && (pscore < psl*4) && (bscore < bsl)) {
+          fill(0);
+          textSize(32);
+          text("Level "+4, (width/2)-50, 40);
+          red = 100;
+          green = 0;
+          blue = 235;
+          b1.setSize(7, 7);
+          b2.setSize(7, 7);
+          b1.setSpeed(5);
+          b2.setSpeed(5);
+          p1.setSize(15, 50);
+          //mp3.rewind();
+          }
+         
+          //You win (4)
+          if ((pscore == psl*4) && (bscore < bsl)) {
+          stroke(0);
+          line(width/2, 15, width/2, 45);
+          fill(0);
+          textSize(50);
+          text("YOU WIN!", (width/2)-110, height/2);
+          textSize(20);
+          text("Keep playing for THE FINAL ROUND!", (width/2)-162, (height/2)+55);
+          //mp3.play();
+          }
+         
+          //Level 5 (Final/Boss level): 3rd ball is added
+          if ((pscore > psl*4) && (pscore < psl*5) && (bscore < bsl)) {
+          fill(0);
+          textSize(32);
+          text("Level "+5, (width/2)-50, 40);
+          b3.setSize(7, 7);
+          b3.setSpeed(5);
+          b1.bossLevel();
+          //mp3.rewind();
+          }
+         
+          //You won - Game over
+          if ((pscore >= psl*5) && (bscore < bsl)){
+          stroke(0);
+          line(width/2, 15, width/2, 45);
+          fill(0);
+          textSize(50);
+          text("YOU WON!", (width/2)-110, height/2);
+          textSize(20);
+          text("play again?", (width/2)-42, (height/2)+55);
+          noFill();
+          rect((width/2)-47, (height/2)+35, 115, 30);
+          red = 255;
+          green = 255;
+          blue = 255;
+          b1.setPos(20, 20);
+          b2.setPos(50, 20);
+          b3.setPos(80, 20);
+          stroke(255);
+          fill(255);
+          rect(5, 65, 240, 80);
+          //image(img1, (width/2)-75, 0, 150, 150);  //Calling image for winning
+          //mp4.play();
+          }
+         
+          //You lose
+          if (bscore >= bsl) {
+          stroke (0);
+          line(width/2, 15, width/2, 45);
+          fill(0);
+          textSize(50);
+          text("YOU LOSE!", (width/2)-120, height/2);
+          textSize(20);
+          text("try again?", (width/2)-42, (height/2)+55);
+          noFill();
+          rect((width/2)-52, (height/2)+35, 110, 30);
+          red = 255;
+          green = 255;
+          blue = 255;
+          b1.setPos(20, 20);
+          b2.setPos(50, 20);
+          b3.setPos(80, 20);
+          //mp5.play();
+          }
+         
+          //Calling all object methods/functions
+          p1.display();
+          b1.display();
+          b1.move();
+          ballCollisions(b1,p1);
+         
+          if (pscore > psl*2) {
+          b2.display();
+          b2.move();
+          ballCollisions(b2,p1);
+          }
+          if (pscore > psl*4) {
+          b3.display();
+          b3.move();
+          ballCollisions(b3,p1);
+          }
+        }
+        
+        //Level 1 default settings/reset
+        void mouseClicked() {
+          pscore = 0;
+          bscore = 0;
+          red = 255;
+          green = 255;
+          blue = 0;
+          b1.setSize(15, 15);
+          b1.setSpeed(3);
+          b1.setPos(width/2, height/2);
+          p1.setSize(15, 80);
+          //mp3.rewind();
+          //mp4.rewind();
+          //mp5.rewind();
+        }
+        
+        class Paddle {
+          int xpos;
+          int paddlewidth, paddleheight;
+          color pcolor;
+         
+          Paddle(int xp, int pw, int ph, color pc) {
+          xpos = xp;
+          paddlewidth = pw;
+          paddleheight = ph;
+          pcolor = pc;
+          }
+         
+          void display() {
+          stroke(0);
+          strokeWeight(2);
+          fill(pcolor);
+          rect(xpos, mouseY, paddlewidth, paddleheight);
+          }
+          void setSize(int pw, int ph) {
+          paddlewidth = pw;
+          paddleheight = ph;
+          }
+          int paddleheight() {
+          return paddleheight;
+          }
+        }
+        
+        class Ball {
+          float xpos, ypos;
+          int xrad, yrad;
+          int xdir, ydir;
+          float speed;
+          color bcolor;
+        
+          Ball(float xp, float yp, int xr, int yr, int xd, int yd, float s, color bc) {
+          xpos = xp;
+          ypos = yp;
+          xrad = xr;
+          yrad = yr;
+          xdir = xd;
+          ydir = yd;
+          speed = s;
+          bcolor = bc;
+          }
+          void display() {
+          fill(bcolor);
+          strokeWeight(2);
+          ellipse(xpos, ypos, xrad*2, yrad*2);
+          }
+          void move() {
+          //Ball movement: up and down
+          ypos -= ydir * speed;
+          //up
+          if (ypos - yrad < 0) {
+            ydir = -1;
+          }
+          if (ypos + yrad > height-45) {
+            ydir = 1;
+          }
+          //Ball movement: left and right
+          xpos += xdir * speed;
+          if (xpos - xrad < 0) {
+            xdir = 1;
+          }
+          if (xpos + xrad > width) {
+            xdir = -1;
+            bscore += 1;
+            //mp2.rewind();
+            //mp2.play();
+          }
+          //Ball hits wall detection
+          if ((xpos + xrad < width) && (xpos + xrad > 565) && (xdir == -1)) {
+            stroke(250, 0, 0);
+            strokeWeight(5);
+            line(width, 0, width, height);
+            fill(0);
+            textSize(32);
+            text("+1", (width/2)-100, 350);
+          }
+          }
+          void setSize(int xr, int yr) {
+          xrad = xr;
+          yrad = yr;
+          }
+          void setSpeed(float s) {
+          speed = s;
+          }
+          void setPos(float xp, float yp) {
+          xpos = xp;
+          ypos = yp;
+          }
+          void bossLevel() {  //Final/Boss level background
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 0) && (xpos < 50)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 50) && (xpos < 100)) {
+            red = 255;
+            green = 255;
+            blue = 255;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 100) && (xpos < 150)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 150) && (xpos < 200)) {
+            red = 255;
+            green = 255;
+            blue = 255;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 200) && (xpos < 250)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 250) && (xpos < 300)) {
+            red = 255;
+            green = 255;
+            blue = 255;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 300) && (xpos < 350)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 350) && (xpos < 400)) {
+            red = 255;
+            green = 255;
+            blue = 255;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 400) && (xpos < 450)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 450) && (xpos < 500)) {
+            red = 255;
+            green = 255;
+            blue = 255;
+          }
+          if ((pscore > psl*4) && (bscore < bsl) && (xpos > 500) && (xpos < 550)) {
+            red = 0;
+            green = 0;
+            blue = 0;
+          }
+          }
+          float xpos() {
+          return xpos;
+          }
+          float ypos() {
+          return ypos;
+          }
+          int xrad() {
+          return xrad;
+          }
+          int yrad() {
+          return yrad;
+          }
+          int xdir() {
+          return xdir;
+          }
+          int ydir() {
+          return ydir;
+          }
+        }
+        
+        void ballCollisions(Ball ball, Paddle paddle) {
+          //Ball hits paddle
+          if ((ball.xpos() + ball.xrad() > 550) && (mouseY-10 < ball.ypos() + ball.xrad()) && (ball.ypos() + ball.xrad() < mouseY + paddle.paddleheight()+10) && (ball.xdir() == 1)) {
+          ball.xdir = -1;
+          pscore += 1;
+          //mp1.rewind();
+          //mp1.play();
+          }
+          //Ball hits paddle detection
+          if ((ball.xpos() + ball.xrad() <= 550) && (500 < ball.xpos() + ball.xrad()) && (mouseY-10 < ball.ypos() + ball.xrad()) && (ball.ypos() + ball.xrad() < mouseY + paddle.paddleheight()+10) && (ball.xdir() == -1)) {
+          stroke(250, 0, 0);
+          strokeWeight(2);
+          line(550, mouseY, 550, mouseY+paddle.paddleheight());
+          fill(0);
+          textSize(32);
+          text("+1", (width/2)+250, 350);
+          }
+        }
+
+      </script>
+      <canvas id="sketch"></canvas>
+      <iframe width="420" height="345" src="https://youtube.com/embed/2WCMgDranD8?autoplay=1&mute=1">
+      </iframe>
     </div>
 </body>
 </html>
