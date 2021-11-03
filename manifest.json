@@ -1,0 +1,24 @@
+{
+  "short_name": "Taylore's Portfolio",
+  "name": "Project Portfolio of Taylore Westbrook",
+  // "icons": [
+  //   {
+  //     "src": "favicon.ico",
+  //     "type": "image/x-icon",
+  //     "sizes": "64x64 32x32 24x24 16x16"
+  //   }
+  // ],
+  "start_url": ".",
+  // "shortcuts": [
+  //   {
+  //     "Home": "./Home",
+  //     "PolyWind": "./project/3",
+  //     "SudokuAI": "./project/2",
+  //     "PuzzlePride": "./project/1",
+  //     "Pong": "./project/0"
+  //   }
+  // ]
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
