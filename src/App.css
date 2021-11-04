@@ -1,38 +1,186 @@
+:root {
+  --p-bg-color: rgba(69, 69, 69, 0.6);
+  --bg-color-primary: #548f6f;
+  --bg-color-secondary: #254132;
+}
+
 .App {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  width: clamp(333px, 66%, 999px);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+html {
+  /* background: -webkit-gradient(linear, left top, right top, from(rgba(0, 128, 0, 0.66)), color-stop(rgba(0, 0, 0, 0.66)), to(rgba(128, 0, 128, 0.66)));
+  background: linear-gradient(90deg, rgba(0, 128, 0, 0.66), rgba(0, 0, 0, 0.66), rgba(128, 0, 128, 0.66));
+  background-size: 500% 500%;
+  -webkit-animation: Gradient 60s ease infinite;
+          animation: Gradient 60s ease infinite; */
+  background: var(--bg-color-primary);
+  font-family: monospace;
+  font-size: calc(1vw + .5em);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+header {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+p {
+  /* background: -webkit-gradient(linear, left top, right top, from(rgba(255, 0, 0, 0.33)), color-stop(rgba(255, 255, 255, 0.33)), to(rgba(0, 0, 255, 0.33)));
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.33), rgba(255, 255, 255, 0.33), rgba(0, 0, 255, 0.33));
+  background-size: 250% 250%;
+  -webkit-animation: Gradient 60s ease infinite;
+          animation: Gradient 60s ease infinite; */
+  background: var(--p-bg-color);
+  padding: 1rem;
+  border: 3px transparent;
+  border-radius: 1rem;
+  font-size: 1rem;
+  /* -webkit-text-fill-color: white;
+  -webkit-animation: Gradient 30s ease infinite;
+          animation: Gradient 30s ease infinite; */
+}
+
+img {
+  padding: 5px;
+}
+
+video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar {
+  background: var(--bg-color-secondary);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons {
+  width: 70vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-item {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: .7rem;
+  border: var(--bg-color-primary);
+}
+
+.nav-item a:hover {
+  height: 8%;
+  background: var(--bg-color-primary);
+  border: var(--bg-color-secondary);
+}
+
+.nav-projects {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-project {
+  top: 103%;
+  display: none;
+  position: absolute;
+  white-space: nowrap;
+  padding: .4rem;
+  border-radius: 1rem;
+  border: var(--bg-color-primary);
+  background: var(--bg-color-secondary);
+}
+
+.nav-projects:hover .nav-project {
+  display: block;
+  border-style: solid;
+}
+
+.glow-on-hover {
+  z-index: 0;
+  position: relative;
+  outline: none;
+  border-radius: 1rem;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  /* filter: blur(1px); */
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  -webkit-animation: glowing 25s linear infinite;
+          animation: glowing 25s linear infinite;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  border-radius: 1rem;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+@-webkit-keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+@-webkit-keyframes Gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes Gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
