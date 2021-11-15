@@ -1,38 +1,15 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.5ef9a76c.chunk.css",
-    "main.js": "/static/js/main.131ec2ba.chunk.js",
-    "main.js.map": "/static/js/main.131ec2ba.chunk.js.map",
+    "main.css": "/static/css/main.2bbf5ae9.chunk.css",
+    "main.js": "/static/js/main.64d81e39.chunk.js",
+    "main.js.map": "/static/js/main.64d81e39.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.55f81643.js",
     "runtime-main.js.map": "/static/js/runtime-main.55f81643.js.map",
-    "static/js/2.0b7d201d.chunk.js": "/static/js/2.0b7d201d.chunk.js",
-    "static/js/2.0b7d201d.chunk.js.map": "/static/js/2.0b7d201d.chunk.js.map",
+    "static/js/2.81316d12.chunk.js": "/static/js/2.81316d12.chunk.js",
+    "static/js/2.81316d12.chunk.js.map": "/static/js/2.81316d12.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.5ef9a76c.chunk.css.map": "/static/css/main.5ef9a76c.chunk.css.map",
-    "static/js/2.0b7d201d.chunk.js.LICENSE.txt": "/static/js/2.0b7d201d.chunk.js.LICENSE.txt"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.55f81643.js",
-    "static/js/2.0b7d201d.chunk.js",
-    "static/css/main.5ef9a76c.chunk.css",
-    "static/js/main.131ec2ba.chunk.js"
-<<<<<<< HEAD
-=======
-=======
-    "static/js/main.4b5fafed.chunk.js"
->>>>>>> 0f7ddf02 (Updates)
-=======
-    "main.css": "/static/css/main.199ad719.chunk.css",
-    "main.js": "/static/js/main.eef68a24.chunk.js",
-    "main.js.map": "/static/js/main.eef68a24.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.55f81643.js",
-    "runtime-main.js.map": "/static/js/runtime-main.55f81643.js.map",
-    "static/js/2.4c4fc86d.chunk.js": "/static/js/2.4c4fc86d.chunk.js",
-    "static/js/2.4c4fc86d.chunk.js.map": "/static/js/2.4c4fc86d.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.199ad719.chunk.css.map": "/static/css/main.199ad719.chunk.css.map",
-    "static/js/2.4c4fc86d.chunk.js.LICENSE.txt": "/static/js/2.4c4fc86d.chunk.js.LICENSE.txt",
+    "static/css/main.2bbf5ae9.chunk.css.map": "/static/css/main.2bbf5ae9.chunk.css.map",
+    "static/js/2.81316d12.chunk.js.LICENSE.txt": "/static/js/2.81316d12.chunk.js.LICENSE.txt",
     "static/media/Asexual-Pride-Flag.50d8ca33.png": "/static/media/Asexual-Pride-Flag.50d8ca33.png",
     "static/media/Bear-Pride-Flag.3ef4ad3d.png": "/static/media/Bear-Pride-Flag.3ef4ad3d.png",
     "static/media/Bisexual-Pride-Flag.246f4c26.png": "/static/media/Bisexual-Pride-Flag.246f4c26.png",
@@ -46,10 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.55f81643.js",
-    "static/js/2.4c4fc86d.chunk.js",
-    "static/css/main.199ad719.chunk.css",
-    "static/js/main.eef68a24.chunk.js"
->>>>>>> a3550253 (Updates)
->>>>>>> a8fe14c7 (Updates)
+    "static/js/2.81316d12.chunk.js",
+    "static/css/main.2bbf5ae9.chunk.css",
+    "static/js/main.64d81e39.chunk.js"
   ]
 }
