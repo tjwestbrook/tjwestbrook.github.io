@@ -1,46 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
-import { DETA_PATH } from '../constants';
-import { PuzzlePride, Pong } from '../projects';
+import { useAxios } from '../utils';
+import Projects from '../projects';
+import { FaPlay } from 'react-icons/fa';
 
 export default function Project() {
   const { id } = useParams()
-  const [projects, setProjects] = useState([])
-
+  const [project, setProject] = useState([])
+  const response = useAxios()
   useEffect(() => {
-    (async () => {
-      id ? await axios.get(`${DETA_PATH}/project/${id}`)
-      .then(res => setProjects([res.data]))
+    (async () => await response
+      .then(res => setProject(id?[res.data]:res.data.reverse()))
       .catch(err => console.log(err))
-      : await axios.get(`${DETA_PATH}/projects`)
-      .then(res => setProjects(res.data.reverse()))
-      .catch(err => console.log(err))
-    })();
-    return () => {
-      setProjects([])
-    }
+    )();
+    return () => setProject([]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  return projects.map(p =>
-    <div key={p.key} style={{display: "inline-block", alignContent: "center"}}>
-      <h2 style={{fontWeight: "bold", fontStyle: "italic", fontSize: "1.3rem"}}>
-        {p.name} · {p.year}
-      </h2>
-      <Link to={`/project/${p.key}`}>
-        <p className={p.key === '1' ? "glow-on-hover" : ""}>
-          {p.description}
-        </p>
-      </Link>
-      <div className="project" style={{ maxWidth: "80vw"}} >
-        {(() => { return {
-          0: <Pong />,
-          1: <PuzzlePride />,
-          // 2: <SudokuAI />,
-          // 3: <PolyWind />
-          }[id]
-        })()}
-      </div>
-    </div>
-  )
+  return project.map(p => <div key={p.key} className="project">
+    <h2>
+      {Projects.slice(0).reverse().map((P,i,Ps) =>
+        parseInt(p.key) === i && i < Ps.length ?
+          <Link to={"/"+P.path}>
+            <FaPlay style={{ color:"orange", paddingRight:"0.5rem"}}
+              onMouseOver={({target})=>target.style.color="purple"}
+              onMouseOut={({target})=>target.style.color="orange"}
+            />
+          </Link>
+        : '')
+      }{p.name} · {p.year}
+    </h2>
+    <Link to={"/project/"+p.key}>
+      <p className={p.key === '1' ? "glow-on-hover" : ""}>
+        {p.description}
+      </p>
+    </Link>
+    {/* {(() => {
+      id ? '' : ''
+    })()} */}
+  </div>)
 }

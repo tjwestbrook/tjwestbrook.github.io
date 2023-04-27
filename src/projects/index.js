@@ -3,4 +3,22 @@
 import PuzzlePride from "./1/sketch";
 import Pong from "./0/sketch";
 
-export { /*PolyWind, SudokuAI, */ PuzzlePride, Pong };
+const Projects = [
+  /*{
+    name: "PolyWind",
+    component: PolyWind
+  },{
+    name: "SudokuAI",
+    component: SudokuAI
+  },*/{
+    name: "Puzzle Pride",
+    component: PuzzlePride
+  },{
+    name: "Pong",
+    component: Pong
+  },
+];
+
+Projects.forEach((P,i,Ps) => P.path = P.name.toLowerCase().replace(/\s/g,''));
+
+export default Projects;
